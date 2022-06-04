@@ -29,7 +29,7 @@ module.exports = {
 			})
 			.catch(async () => {
 				await msg.reply(
-					`IND:\n${lang.indo.util.download.twittFail}\n\nEN:\n${lang.eng.util.download.twittFail}`
+					lang.ptbr.util.download.twittFail
 				);
 			});
 	},

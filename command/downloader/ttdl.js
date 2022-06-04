@@ -2,7 +2,7 @@ const Downloader = require("../../utils/downloader");
 const { ttdl } = new Downloader();
 const lang = require("../other/text.json");
 
-const errMess = `ID:\n${lang.indo.util.download.ttFail}\n\nEN:\n${lang.eng.util.download.ttFail}`;
+const errMess = lang.ptbr.util.download.ttFail;
 
 module.exports = {
 	name: "ttdl",

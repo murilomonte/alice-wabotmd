@@ -15,8 +15,8 @@ module.exports = {
 		try {
 			if (args.length < 1) return await msg.reply(`URL not provided`);
 			let { url, opt } = textParse(args.join(" "));
-			if (!validateURL(url)) return await msg.reply(lang.eng.util.download.notYTURL);
-			await msg.reply(`IND:\n${lang.indo.util.download.progress}\n\nEN:\n${lang.eng.util.download.progress}`);
+			if (!validateURL(url)) return await msg.reply(lang.ptbr.util.download.notYTURL);
+			await msg.reply(lang.ptbr.util.download.progress);
 
 			const res = await yt(url, "video");
 			if (res === "no_file") return await msg.reply("No download link found, maybe try another link?");

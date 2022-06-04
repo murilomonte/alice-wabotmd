@@ -2,7 +2,7 @@ const Downloader = require("../../utils/downloader");
 const { insta } = new Downloader();
 const lang = require("../other/text.json");
 const axios = require("axios").default;
-const errMes = `ID:\n${lang.indo.util.download.igFail}\n\nEN:\n${lang.eng.util.download.igFail}`;
+const errMes = lang.ptbr.util.download.igFail;
 
 module.exports = {
 	name: "igdl",
