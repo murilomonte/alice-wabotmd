@@ -83,5 +83,48 @@
 				"success": "Successfully changed group settings."
 			}
 		}
-	}
+	},
+	"pt-br": {
+		"stick": "Envie ou responda uma imagem/vídeo/documento que eu converto em sticker rapidinho :).\nSó certifique-se de que o tamanho não seja maior que 2 MB e a duração máxima seja de 10 segundos.",
+		"stickmeme": "Envie ou responda uma imagem/vídeo/documento que eu converto em sticker rapidinho :)\nInfelizmente não faço de videos :/ (por enquanto)",
+		"memeImg": "Envie ou responda uma imagem/video/documento que eu adiciono um texto nele, igual um meme da SAM.\nInfelizmente não faço de videos :/ (por enquanto)",
+		"util": {
+		  "toimg": {
+			"msg": "Responda um sticker que eu converto em uma imagem pra você :)\nInfelizmente só consigo transformar stickers não animados :/.",
+			"fail": "Algum erro ocorreu ao tentar converter o sticker... :(\nTente novamente."
+		  },
+		  "download": {
+			"igFail": "Não foi possível baixar a mídia do instagram :/\nVerifique o link ou tente novamente mais tarde :)",
+			"twittFail": "Não foi possível baixar a mídia do twitter :/\nVerifique o link ou tente novamente mais tarde :)",
+			"progress": "_Um minutinho..._\nQuase lá!",
+			"ttFail": "Não foi possível baixar a mídia do tiktok :/\nVerifique o link ou tente novamente mais tarde :)",
+			"fbFail": "Não foi possível baixar a mídia do facebook :/\nVerifique o link ou tente novamente mais tarde :)",
+			"fbPriv": "Esse link parece ser de um post privado... Infelizmente não tenho como baixar :/",
+			"notYTURL": "URL inválida.\nEnvie !yts ou pesquise o vídeo no youtube."
+		  }
+		},
+		"group": {
+		  "promote": {
+			"success": "Promovido com sucesso meu caro :)",
+			"fail": "Não foi possível promover :/",
+			"noPerms": "Você não tem permissão pra usar esse comando.",
+			"botNoPerms": "Preciso ser ademira pra poder usar esse comando :)"
+		  },
+		  "demote": {
+			"success": "Rebaixado com sucesso! :)",
+			"fail": "Não foi possível rebaixar :/",
+			"noPerms": "Você não tem permissão pra usar esse comando.",
+			"botNoPerms": "Preciso ser ademira pra poder usar esse comando :)"
+		  },
+		  "tagall": {
+			"noPerms": "Você não tem permissão pra usar esse comando."
+		  },
+		  "gcset": {
+			"fail": "Não foi possível rebaixar :/",
+			"noPerms": "Você não tem permissão pra usar esse comando.",
+			"botNoPerms": "Preciso ser ademira pra poder usar esse comando :)",
+			"success": "Configurações do grupo alteradas com sucesso! :)"
+		  }
+		}
+	  }
 }
