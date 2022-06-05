@@ -3,12 +3,11 @@
 
 # Alice_bot - Multi Devices
 
-## [![JavaScript](https://img.shields.io/badge/JavaScript-d6cc0f?style=for-the-badge&logo=javascript&logoColor=white)](https://javascript.com) [![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+### [![JavaScript](https://img.shields.io/badge/JavaScript-d6cc0f?style=for-the-badge&logo=javascript&logoColor=white)](https://javascript.com) [![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
 ### Atenção 
-Esse bot foi feito com base no <a src="https://github.com/FaizBastomi/wbot">Kaguya PublicBot - MD</a> criado por <a src="https://github.com/FaizBastomi">FaizBastomi</a>,   todos os créditos à ele.
+Esse bot foi feito com base no <a href="https://github.com/FaizBastomi/wbot">Kaguya PublicBot - MD</a> criado por <a href="https://github.com/FaizBastomi">FaizBastomi</a>,   todos os créditos à ele.
 <hr>
-
 </div><br />
 <br />
 
@@ -42,12 +41,12 @@ Pegue a API do OpenWeatherMap aqui: [openweathermap.org](https://openweathermap.
 
 ### Criação de comandos
 - Entre na pasta `./command`
-- Em seguida escolha uma cateoria para seu comando (ex: `./command/general`)
+- Em seguida escolha uma categoria para seu comando (ex: `./command/general`)
 - Então crie um arquivo `.js` com o nome do seu comando.  (ex: `./command/general/menulegal.js`)
 - Ao criar o arquivo, use o seguinte código/template para criar o seu comando (é simples, juro!)
 
 ```ts
-modules. exports = {
+modules.exports = {
 	"name": string, //nome do comando (e como você quer que ele seja chamado. ex: /menulegal)
 	"desc": string, //descrição
 	"use": string, //uso
@@ -63,9 +62,9 @@ modules. exports = {
 	}
 }
 ```
-- examplo
+- exemplo
 ```ts
-modules. exports =  {
+modules.exports =  {
 	"name": "igdl",
 	"desc": "Instagram Downloader",
 	"use": "<link>",
@@ -91,17 +90,21 @@ modules. exports =  {
 
 ### Instalação do ffmpeg
 - Se você usa windows, veja como instala por aqui [WikiHow](https://www.wikihow.com/Install-FFmpeg-on-Windows).<br />
-- Para usuários Linux você pode instalar através do seu gerenciador de pacotes
+- Para usuários Linux, você pode instalar através do seu gerenciador de pacotes:
 
 ```bash
-# apt
+# apt (ubuntu/debian)
 sudo apt install ffmpeg -y
 
-# pacman
+# pacman (arch/manjaro)
 sudo pacman -S ffmpeg
 
 # termux
 pkg install ffmpeg -y
+
+# dnf (fedora)
+# habilite o RPM fusion antes
+sudo dnf install ffmpeg
 ```
 
 ### Instalação do libWebP
@@ -121,14 +124,17 @@ webpmux -version
 - Para usuários linux, pasta usar o gerenciador de pacotes da sua distro: 
 
 ```bash
-# apt
+# apt (ubuntu/debian)
 sudo apt install libwebp-dev -y
 
-# pacman
+# pacman (arch/manjaro)
 sudo pacman -S libwebp
 
-#termux
+# termux
 pkg install libwebp
+
+# dnf (fedora)
+sudo dnf install libwebp
 ```
 
 ### Instalação final
@@ -146,11 +152,13 @@ npm install
 ### Inicie o bot
 Inicie e scaneie o qr-code
 ```
-npm run start
+npm start
+
 # ou
+
 node ./lib/connect.js
 ```
 
-##Agradecimentos
-- <a src="https://github.com/FaizBastomi">FaizBastomi</a> pela base
-- <a src="https://github.com/adiwajshing/Baileys">adiwajshing/Baileys</a> pela API baileys
+## Agradecimentos
+- <a href="https://github.com/FaizBastomi">FaizBastomi</a> pela base
+- <a href="https://github.com/adiwajshing/Baileys">adiwajshing/Baileys</a> pela API baileys
