@@ -3,12 +3,11 @@
 
 # Alice_bot - Multi Devices
 
-## [![JavaScript](https://img.shields.io/badge/JavaScript-d6cc0f?style=for-the-badge&logo=javascript&logoColor=white)](https://javascript.com) [![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
+### [![JavaScript](https://img.shields.io/badge/JavaScript-d6cc0f?style=for-the-badge&logo=javascript&logoColor=white)](https://javascript.com) [![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
 
 ### Atenção 
-Esse bot foi feito com base no <a src="https://github.com/FaizBastomi/wbot">Kaguya PublicBot - MD</a> criado por <a src="https://github.com/FaizBastomi">FaizBastomi</a>,   todos os créditos à ele.
+Esse bot foi feito com base no <a href="https://github.com/FaizBastomi/wbot">Kaguya PublicBot - MD</a> criado por <a href="https://github.com/FaizBastomi">FaizBastomi</a>,   todos os créditos à ele.
 <hr>
-
 </div><br />
 <br />
 
@@ -63,7 +62,7 @@ modules. exports = {
 	}
 }
 ```
-- examplo
+- exemplo
 ```ts
 modules. exports =  {
 	"name": "igdl",
@@ -127,7 +126,7 @@ sudo apt install libwebp-dev -y
 # pacman
 sudo pacman -S libwebp
 
-#termux
+# termux
 pkg install libwebp
 ```
 
@@ -147,10 +146,12 @@ npm install
 Inicie e scaneie o qr-code
 ```
 npm run start
+
 # ou
+
 node ./lib/connect.js
 ```
 
-##Agradecimentos
-- <a src="https://github.com/FaizBastomi">FaizBastomi</a> pela base
-- <a src="https://github.com/adiwajshing/Baileys">adiwajshing/Baileys</a> pela API baileys
+## Agradecimentos
+- <a href="https://github.com/FaizBastomi">FaizBastomi</a> pela base
+- <a href="https://github.com/adiwajshing/Baileys">adiwajshing/Baileys</a> pela API baileys
