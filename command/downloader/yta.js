@@ -6,27 +6,25 @@ const { validateURL } = require("../../utils/youtube-url-utils");
 
 module.exports = {
 	name: "yta",
-	limit: true,
-	consume: 2,
 	alias: ["ytmp3", "ytaudio"],
 	category: "downloader",
-	desc: "Download YouTube Audio",
+	desc: "Use isso para baixar músicas do youtube ::)",
 	async exec({ sock, msg, args }) {
 		try {
-			if (args.length < 1) return await msg.reply(`URL not provided`);
+			if (args.length < 1) return await msg.reply(`Acho que você esqueceu de enviar o link.`);
 			let { url, opt } = textParse(args.join(" "));
 			if (!validateURL(url)) return await msg.reply(lang.ptbr.util.download.notYTURL);
 			await msg.reply(lang.ptbr.util.download.progress);
 
 			const res = await yt(url, "audio");
-			if (res === "no_file") return await msg.reply("No download link found, maybe try another link?");
+			if (res === "no_file") return await msg.reply("Não consegui baixar com o link que você enviou :/\nTenta outro :)");
 			switch (opt) {
 				case "--doc":
 					if (res.size >= 15 << 10) {
 						let short = await fetchText(`https://tinyurl.com/api-create.php?url=${res.dl_link}`);
 						let capt =
-							`*Title:* ${res.title}\n` +
-							`*Quality:* ${res.q}\n*Size:* ${res.sizeF}\n*Download:* ${short}\n\n_size to big_`;
+							`*Título:* ${res.title}\n` +
+							`*Qualidade:* ${res.q}\n*Tamanho:* ${res.sizeF}\n*Download:* ${short}\n\n_size to big_`;
 						await sock.sendMessage(msg.from, { image: { url: res.thumb }, caption: capt }, { quoted: msg });
 					} else {
 						await sock.sendMessage(
@@ -44,8 +42,8 @@ module.exports = {
 					if (res.size >= 15 << 10) {
 						let short = await fetchText(`https://tinyurl.com/api-create.php?url=${res.dl_link}`);
 						let capt =
-							`*Title:* ${res.title}\n` +
-							`*Quality:* ${res.q}\n*Size:* ${res.sizeF}\n*Download:* ${short}\n\n_size to big_`;
+							`*Título:* ${res.title}\n` +
+							`*Qualidade:* ${res.q}\n*Tamanho:* ${res.sizeF}\n*Download:* ${short}\n\n_size to big_`;
 						await sock.sendMessage(msg.from, { image: { url: res.thumb }, caption: capt }, { quoted: msg });
 					} else {
 						await sock.sendMessage(
@@ -63,8 +61,8 @@ module.exports = {
 					if (res.size >= 15 << 10) {
 						let short = await fetchText(`https://tinyurl.com/api-create.php?url=${res.dl_link}`);
 						let capt =
-							`*Title:* ${res.title}\n` +
-							`*Quality:* ${res.q}\n*Size:* ${res.sizeF}\n*Download:* ${short}\n\n_size to big_`;
+							`*Título:* ${res.title}\n` +
+							`*Qualidade:* ${res.q}\n*Tamanho:* ${res.sizeF}\n*Download:* ${short}\n\n_size to big_`;
 						await sock.sendMessage(msg.from, { image: { url: res.thumb }, caption: capt }, { quoted: msg });
 					} else {
 						await sock.sendMessage(
@@ -76,7 +74,7 @@ module.exports = {
 			}
 		} catch (e) {
 			console.log(e);
-			await msg.reply("Something went wrong, check back later.");
+			await msg.reply("Infelizmente algo deu errado... :/\nTente novamente mais tarde.");
 		}
 	},
 };

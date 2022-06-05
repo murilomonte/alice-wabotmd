@@ -6,13 +6,9 @@ const errMes = lang.ptbr.util.download.igFail;
 
 module.exports = {
 	name: "igdl",
-	limit: true,
-	consume: 3,
-	premium: true,
-	premiumType: ["drakath", "nulgath", "artix"],
 	alias: ["ig"],
 	category: "downloader",
-	desc: "Download instagram media",
+	desc: "Envie esse comando seguido de un link do instagram que eu baixo pra você :)",
 	async exec({ sock, msg, args }) {
 		if (!args.length > 0) return await msg.reply("Ex: !igdl *instagram_url*");
 		try {

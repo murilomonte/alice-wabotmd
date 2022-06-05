@@ -12,14 +12,14 @@ module.exports = {
 			const { commands, prefix } = djs;
 			const cmd = commands.get(name) || commands.find((cmd) => cmd.alias && cmd.alias.includes(name));
 			if (!cmd || (cmd.category === "private" && !isOwner)) return await msg.reply("No command found");
-			else data.push(`*Cmd:* ${cmd.name}`);
-			if (cmd.alias) data.push(`*Alias:* ${cmd.alias.join(", ")}`);
-			if (cmd.limit) data.push(`*Limit:* ${cmd.consume || 1}`);
+			else data.push(`*Comando:* ${cmd.name}`);
+			if (cmd.alias) data.push(`*ALternativas:* ${cmd.alias.join(", ")}`);
+			if (cmd.limit) data.push(`*Limite:* ${cmd.consume || 1}`);
 			if (cmd.premium) data.push(`*Premium:* ${cmd.premiumType.join(" / ")}`);
-			if (cmd.desc) data.push(`*Description:* ${cmd.desc}`);
+			if (cmd.desc) data.push(`*Descrição:* ${cmd.desc}`);
 			if (cmd.use)
 				data.push(
-					`*Usage:* \`\`\`${prefix}${cmd.name} ${cmd.use}\`\`\`\n\nNote: [] = optional, | = or, <> = must filled`
+					`*Uso* \`\`\`${prefix}${cmd.name} ${cmd.use}\`\`\`\n\nNota:\n [] = opcional\n | = ou\n <> = deve ser preenchido`
 				);
 
 			return await msg.reply(data.join("\n"));
@@ -62,7 +62,7 @@ module.exports = {
 						{
 							urlButton: {
 								displayText: "Código fonte",
-								url: "https://github.com/FaizBastomi/wbot/tree/multi-device",
+								url: "https://github.com/murilomonte/alice-wabotmd",
 							},
 						},
 					],

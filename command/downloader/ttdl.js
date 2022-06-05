@@ -6,25 +6,23 @@ const errMess = lang.ptbr.util.download.ttFail;
 
 module.exports = {
 	name: "ttdl",
-	limit: true,
-	consume: 1,
 	alias: ["tiktok", "tt", "tiktokdl", "tiktokmusic", "tiktoknowm", "tiktokwm", "ttwm", "ttnowm", "ttmusic"],
 	category: "downloader",
-	desc: "Download TikTok Video",
-	use: "[options] url\n\n- *Options* -\n\n1. audio\n2. video\n\nEx: !tiktok audio url",
+	desc: "Use isso para baixar vídeos do tiktok",
+	use: "[opção] url\n\n- *Opções* -\n\n1. audio\n2. video\n\nEx: !tiktok audio url",
 	async exec({ sock, msg, args }) {
 		try {
 			let opt = args[0];
 			const { url } = parse(args.join(" "));
 			if (url === "") {
-				return await msg.reply("No valid URL detected");
+				return await msg.reply("O link que você enviou parece ser inválido :/");
 			}
 			let data;
 			switch (opt) {
 				case "audio":
 				case "music":
 					data = await ttdl(url);
-					if (!data.mp3.length > 0) return msg.reply("NO AUDIO FOR THIS VIDEO");
+					if (!data.mp3.length > 0) return msg.reply("Não foi possível encontrar o áudio :/");
 					await sock.sendMessage(
 						msg.from,
 						{ audio: { url: data.mp3[data.mp3.length - 1] }, mimetype: "audio/mp4" },
@@ -33,7 +31,7 @@ module.exports = {
 					break;
 				case "video":
 					data = await ttdl(url);
-					if (!data.mp4.length > 0) return msg.reply("NO VIDEO FOUND");
+					if (!data.mp4.length > 0) return msg.reply("Não foi possível encontrar o vídeo :/");
 					await sock.sendMessage(
 						msg.from,
 						{ video: { url: data.mp4[data.mp4.length - 1] } },
@@ -42,7 +40,7 @@ module.exports = {
 					break;
 				default:
 					data = await ttdl(url);
-					if (!data.mp4.length > 0) return msg.reply("NO VIDEO FOUND");
+					if (!data.mp4.length > 0) return msg.reply("Não foi possível encontrar o vídeo :/");
 					await sock.sendMessage(
 						msg.from,
 						{ video: { url: data.mp4[data.mp4.length - 1] } },

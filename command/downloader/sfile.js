@@ -2,15 +2,13 @@ const { sfile } = require("../../utils/scraper");
 
 module.exports = {
 	name: "sfile",
-	limit: true,
-	consume: 3,
 	alias: ["sf"],
-	desc: "Search and download file form sfile.mobi",
-	use: "<option> <query|link>\n\nOptions:\n- search\n- latest",
+	desc: "Busque e baixe arquivos do site sfile.mobi",
+	use: "<opção> <busca|link>\n\nOpções:\n- search\n- latest",
 	category: "downloader",
 	async exec({ msg, args }) {
 		try {
-			if (!args.length > 0) return await msg.reply("No option entered.\nPlease refer to #help sfile");
+			if (!args.length > 0) return await msg.reply("Você não enviou nenhuma opção de busca.\nEnvie #help sfile para saber como o comando funciona :)");
 			let opts = args[0],
 				query = args.slice(1),
 				searchResult,
@@ -18,19 +16,19 @@ module.exports = {
 			switch (opts) {
 				case "search":
 					searchResult = await sfile.search(query.join(" "));
-					if (!searchResult.length > 0) return await msg.reply("No result");
-					text += `Result for: \`\`\`${query.join(" ")}\`\`\`\n\n`;
+					if (!searchResult.length > 0) return await msg.reply("Sem resulados :/");
+					text += `Resultado para: \`\`\`${query.join(" ")}\`\`\`\n\n`;
 					for (let idx in searchResult) {
-						text += `*Name*: ${searchResult[idx].name}\n*Size*: ${searchResult[idx].size}\n*Link*: ${searchResult[idx].link}\n\n`;
+						text += `*Nome*: ${searchResult[idx].name}\n*Tamanho*: ${searchResult[idx].size}\n*Link*: ${searchResult[idx].link}\n\n`;
 					}
 					await msg.reply(text);
 					break;
 				case "latest":
 					searchResult = await sfile.latest();
-					text += "Latest upload from sfile.mobi\n\n";
+					text += "Último arquivo enviado pno sfile.mobi\n\n";
 					for (let idx in searchResult) {
 						text +=
-							`*Name*: ${searchResult[idx].name}\n*Size*: ${searchResult[idx].size}\n` +
+							`*Nome*: ${searchResult[idx].name}\n*Tamanho*: ${searchResult[idx].size}\n` +
 							`*${searchResult[idx].upload}*\n*Link*: ${searchResult[idx].link}\n\n`;
 					}
 					await msg.reply(text);
@@ -43,10 +41,10 @@ module.exports = {
 				//     await sock.sendMessage(msg.from, { document: dBuffer, fileName: filename, mimetype: mime }, { quoted: msg });
 				//     break;
 				default:
-					await msg.reply("Available option *search* | *latest*.\nExample: #sfile search MT Manager");
+					await msg.reply("Opção dispońivel *search* | *latest*.\nExemplo: #sfile search minecraft");
 			}
 		} catch {
-			await msg.reply("Error while processing your request");
+			await msg.reply("Ocorreu um erro ao processar :/");
 		}
 	},
 };

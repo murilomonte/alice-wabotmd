@@ -4,13 +4,11 @@ const lang = require("../other/text.json");
 
 module.exports = {
 	name: "twtdl",
-	limit: true,
-	consume: 1,
 	alias: ["twt"],
 	category: "downloader",
 	async exec({ sock, msg, args }) {
 		if (!args.length > 0 || !args[0].includes("twitter.com") || args[0].includes("t.co"))
-			return await msg.reply("URL needed");
+			return await msg.reply("Acho que você esqueceu de enviar o link.");
 		getInfo(args[0])
 			.then(async (data) => {
 				if (data.type === "video") {
