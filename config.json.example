@@ -1,0 +1,19 @@
+{
+    "botName": "Alice",			//Nome do bot
+    "owner": [					//Seu número e/ou o do seu amigo
+        "seu_numero@s.whatsapp.net",
+        "outro_numero@s.whatsapp.net"
+    ],
+    "openWeather": "OpenWeather_APIkey",	// OpenWeather API
+    "igCookie": "Instagram_Cookie",		// Instagram Cookie
+    "session": "session-md.json",		//Nome do arquivo de sessão
+    "user_db": "users-db.json",			// Nome do arquivo de usuários
+    "chat_store": "baileys-store.json",		// Chat Store
+    "timezone": "America/Bahia",			// Seu fuso-horário
+    "footer": "Alice_bot • Moonly",	// Rodapé de algumas mensagens
+    "tier": {					// Premium Tier
+        "drakath": 200,
+        "nulgath": 500,
+        "artix": 999
+    }
+}
