@@ -5,7 +5,7 @@ module.exports = {
 	name: "s",
 	alias: ["sticker", "stick", "stik", "stiker", "stickergif", "stikergif", "gifstiker", "gifsticker"],
 	category: "general",
-	desc: "Create a sticker from image or video",
+	desc: "Use isso para criar um sticker a partir de uma imagem/video/gif/documento :)",
 	async exec({ msg, sock }) {
 		const { quoted, from, type } = msg;
 
@@ -44,11 +44,11 @@ module.exports = {
 				stickerBuff = await sticker(buffer, { ...ext, cmdType: "1" });
 				await sock.sendMessage(from, { sticker: stickerBuff }, { quoted: msg });
 			} else {
-				await msg.reply(`IND:\n${lang.indo.stick}\n\nEN:\n${lang.eng.stick}`);
+				await msg.reply(lang.ptbr.stick);
 			}
 			(buffer = null), (stickerBuff = null);
 		} catch (e) {
-			await msg.reply("Error while creating sticker");
+			await msg.reply("Infelizmente ocorreu um erro ao processar o seu sticker :/");
 		}
 	},
 };

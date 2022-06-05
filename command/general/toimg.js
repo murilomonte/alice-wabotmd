@@ -8,7 +8,7 @@ module.exports = {
 	name: "toimage",
 	alias: ["toimg", "tomedia", "tovid", "tovideo"],
 	category: "general",
-	desc: "Convert your sticker to media (image)",
+	desc: "Use isso para converter stickers em imagens :)\nObs: infelizmente ainda não converto figurinhas animadas :(",
 	async exec({ sock, msg }) {
 		const { quoted, from, type } = msg;
 
@@ -28,11 +28,11 @@ module.exports = {
 					fs.unlinkSync(path);
 					if (err)
 						return await msg.reply(
-							`IND:\n${lang.indo.util.toimg.fail}\n\nEN:\n${lang.eng.util.toimg.fail}`
+							lang.ptbr.util.toimg.fail
 						);
 					await sock.sendMessage(
 						from,
-						{ image: fs.readFileSync(`./temp/${ran1}`), caption: "Done." },
+						{ image: fs.readFileSync(`./temp/${ran1}`), caption: "Prontinho :)" },
 						{ quoted: msg }
 					);
 					fs.unlinkSync(`./temp/${ran1}`);
@@ -47,10 +47,10 @@ module.exports = {
 				await sock.sendMessage(from, { video: { url: ezgif } }, { quoted: msg });
 				fs.unlinkSync(path);
 			} else {
-				await msg.reply(`IND:\n${lang.indo.util.toimg.msg}\n\nEN:\n${lang.eng.util.toimg.msg}`);
+				await msg.reply(lang.ptbr.util.toimg.msg);
 			}
 		} catch {
-			await msg.reply(`IND:\n${lang.indo.util.toimg.fail}\n\nEN:\n${lang.eng.util.toimg.fail}`);
+			await msg.reply(lang.ptbr.util.toimg.fail);
 		}
 	},
 };

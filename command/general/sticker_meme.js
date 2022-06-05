@@ -4,11 +4,10 @@ const lang = require("../other/text.json");
 
 module.exports = {
 	name: "stikmeme",
-	limit: true,
-	consume: 3,
 	alias: ["stickermeme", "stikermeme", "stiktext", "stickertext", "stikertext", "sticktext", "smeme", "stext"],
 	category: "general",
-	desc: "Create a sticker from image",
+	desc: "Use isso para criar um sticker, só que meme 😳",
+	use: "<texto>|<texto>\n\nEx:\n!stickermeme eis que|a 10/10",
 	async exec({ msg, arg, sock }) {
 		const { quoted, from, type } = msg;
 
@@ -32,11 +31,11 @@ module.exports = {
 				stickerBuff = await sticker(memeImg, { isImage: true, cmdType: "1" });
 				await sock.sendMessage(from, { sticker: stickerBuff }, { quoted: msg });
 			} else {
-				await msg.reply(`IND:\n${lang.indo.stickmeme}\n\nEN:\n${lang.eng.stickmeme}`);
+				await msg.reply(lang.ptbr.stickmeme);
 			}
 			(buffer = null), (memeImg = null), (stickerBuff = null);
 		} catch (e) {
-			await msg.reply("Error while creating sticker");
+			await msg.reply("Infelizmente ocorreu um erro ao criar o sticker :/");
 		}
 	},
 };

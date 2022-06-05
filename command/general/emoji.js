@@ -4,20 +4,16 @@ const { sticker } = require("../../lib/convert");
 
 module.exports = {
 	name: "moji",
-	limit: true,
-	consume: 2,
-	premium: true,
-	premiumType: ["nulgath", "artix"],
 	alias: ["emoji"],
-	desc: "Convert emoji to sticker.",
+	desc: "Use esse comando pra converter um emoji em sticker :).",
 	category: "general",
-	use: "[provider] <emoji>\n\nProvider:\n- WhatsApp\n- Samsung\n- Apple\n- Google",
+	use: "[provedor] <emoji>\n\nProvedores:\n- WhatsApp\n- Samsung\n- Apple\n- Google",
 	async exec({ sock, msg, args }) {
 		const { from } = msg;
 
 		let emojiBuff, stickerBuff;
 		try {
-			if (!args.length > 0) return await msg.reply("Need to specify emoji");
+			if (!args.length > 0) return await msg.reply("Você precisa especificar o emoji");
 			if (args.length > 1 && args.length === 2) {
 				const links = await emojiped(args.slice(1)[0]);
 				let provider = Object.keys(links);
@@ -38,7 +34,7 @@ module.exports = {
 			}
 			(emojiBuff = null), (stickerBuff = null);
 		} catch (e) {
-			await msg.reply("Error while processing your emoji");
+			await msg.reply("Ocorreu um erro ao processar o seu emoji :/");
 		}
 	},
 };

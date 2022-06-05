@@ -8,16 +8,14 @@ const lang = require("../other/text.json");
 
 module.exports = {
 	name: "swm",
-	limit: true,
-	consume: 2,
 	alias: ["stickerwm", "stickwm", "stikerwm", "stikwm"],
 	category: "general",
-	desc: "Create sticker with author and packname",
-	use: "packname|authorname",
+	desc: "Use isso para criar um sticker com pack e autor a partir de uma imagem/video/gif/documento :)\nEnvie /help swm para ver como usar",
+	use: "nomedopack|nomedoautor\n\nEx: /swm figutops|Juau",
 	async exec({ msg, arg, sock }) {
 		const { quoted, from, sender, type } = msg;
 		let packname = arg.split("|")[0] || "Default";
-		let author = arg.split("|")[1] || "SMH BOT";
+		let author = arg.split("|")[1] || "Alice_bot";
 
 		const content = JSON.stringify(quoted);
 		const isMedia = type === "imageMessage" || type === "videoMessage";
@@ -89,11 +87,11 @@ module.exports = {
 				});
 				await sock.sendMessage(from, { sticker: stickerBuff }, { quoted: msg });
 			} else {
-				await msg.reply(`IND:\n${lang.indo.stick}\n\nEN:\n${lang.eng.stick}`);
+				await msg.reply(lang.ptbr.stick);
 			}
 			(buffer = null), (stickerBuff = null);
 		} catch (e) {
-			await msg.reply("Error while creating sticker");
+			await msg.reply("Infelizmente ocorreu um erro ao processar o seu sticker :/");
 		}
 	},
 };

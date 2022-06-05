@@ -3,14 +3,13 @@ const { igProfile } = new Downloader();
 
 module.exports = {
 	name: "igstalk",
-	limit: true,
-	consume: 1,
+	desc: "Use esse comando para stalkear algumas informações de um perfil no instagram",
 	alias: ["igprofile"],
 	category: "general",
 	use: "<username>",
 	async exec({ sock, msg, args }) {
 		try {
-			if (!args.length > 0) return await msg.reply("Instagram username required!");
+			if (!args.length > 0) return await msg.reply("Você precisa informar o @ do perfil");
 			const profile = await igProfile(args[0]);
 			let text = Object.keys(profile.metadata)
 				.map((str) => `${str}: ${profile.metadata[str]}`)

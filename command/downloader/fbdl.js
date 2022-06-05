@@ -11,7 +11,7 @@ module.exports = {
 	desc: "envie esse comando seguido de um link de um video do facebook que eu baixo ele rapidinho pra você :)",
 	async exec({ sock, msg, args }) {
 		try {
-			if (!args.length > 0) return await msg.reply("No url provided");
+			if (!args.length > 0) return await msg.reply("Acho que você esqueceu de enviar o link.");
 			let data = await fbdl(args[0]);
 
 			if (data.length === 0)

@@ -3,11 +3,9 @@ const lang = require("../other/text.json");
 
 module.exports = {
 	name: "meme",
-	limit: true,
-	consume: 2,
 	category: "general",
-	desc: "Add text to image",
-	use: "<teks>|<teks>\n\nEx:\n!meme atas|bawah",
+	desc: "Use isso para adicionar textos em uma imagem, como um meme :)",
+	use: "<texto>|<texto>\n\nEx:\n!meme eis que|a 10/10",
 	async exec({ sock, msg, arg }) {
 		const { quoted, from, type } = msg;
 
@@ -29,11 +27,11 @@ module.exports = {
 				memeImg = await memeText(buffer, top, bottom);
 				await sock.sendMessage(from, { image: memeImg }, { quoted: msg });
 			} else {
-				await msg.reply(`IND:\n${lang.indo.memeImg}\n\nEN:\n${lang.eng.memeImg}`);
+				await msg.reply(lang.ptbr.memeImg);
 			}
 			(buffer = null), (memeImg = null);
 		} catch (e) {
-			await msg.reply("Error while creating image");
+			await msg.reply("Ocorreu um erro ao processar o seu meme :/");
 		}
 	},
 };

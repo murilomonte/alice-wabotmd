@@ -4,11 +4,9 @@ const run = require("child_process").exec;
 
 module.exports = {
 	name: "nowm",
-	limit: true,
-	consume: 1,
 	alias: ["delwm", "wmdel"],
 	category: "general",
-	desc: "Erase authorname, packanme and link 'view more'",
+	desc: "Use isso para remover o autor, pacote e 'veja mais' das figurinhas.",
 	async exec({ sock, msg }) {
 		const { quoted, type, from } = msg;
 		const content = JSON.stringify(quoted);
@@ -27,10 +25,10 @@ module.exports = {
 					fs.unlinkSync(`./temp/${ran1}`);
 				});
 			} else {
-				await msg.reply("Please, reply to a sticker");
+				await msg.reply("Acho que você esqueceu de responder o sticker.");
 			}
 		} catch (e) {
-			await msg.reply(`Error while creating sticker\n${e.message}`);
+			await msg.reply(`infelizmente ocorreu algum erro :/\nErro: ${e.message}`);
 		}
 	},
 };

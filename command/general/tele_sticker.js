@@ -3,29 +3,27 @@ const { footer } = require("../../config.json");
 
 module.exports = {
 	name: "telestick",
-	limit: true,
-	consume: 2,
 	category: "general",
-	desc: "Search telegram sticker for you.",
-	use: "<query>|[page number].\nExample: #telestick Ame|2",
+	desc: "Use esse comando para buscar pacotes de figurinhas no telegram :).",
+	use: "<bsuca>|[número da página].\nExemplo: #telestick Ame|2",
 	async exec({ msg, arg, sock }) {
 		try {
 			let dataSticker,
 				text = "",
 				page = parseInt(arg.split("|")[1]) || 1,
 				query = arg.split("|")[0] || null;
-			if (query === "" || !query || query === ".telestick") return await msg.reply("No query given to search");
+			if (query === "" || !query || query === ".telestick") return await msg.reply("Você esqueceu de dizer qual o temo pra procurar.");
 
 			dataSticker = await telegramSticker.search(query, page);
-			if (!dataSticker.stickers.length > 0) return await msg.reply("No sticker were found");
+			if (!dataSticker.stickers.length > 0) return await msg.reply("Nenhum pack de sticker foi encontrado :/");
 
 			text +=
-				`Search result: \`\`\`${query}\`\`\`\nTotal Page: ${dataSticker.pageInfo.total}\n` +
-				`Now at: ${page}\n\n`;
+				`Resultado da busca: \`\`\`${query}\`\`\`\nQuantidade de páginas: ${dataSticker.pageInfo.total}\n` +
+				`Você está na: ${page}\n\n`;
 			for (let idx in dataSticker.stickers) {
-				text += `Name: ${dataSticker.stickers[idx].name}\nLink: ${dataSticker.stickers[idx].link}\n\n`;
+				text += `Nome: ${dataSticker.stickers[idx].name}\nLink: ${dataSticker.stickers[idx].link}\n\n`;
 			}
-			text += "Download function coming soon.";
+			text += "Função de donwload em breve...";
 
 			// delete old message
 			if (msg.quoted) await msg.quoted.delete();
@@ -35,7 +33,7 @@ module.exports = {
 				const buttons = [
 					{
 						buttonId: `#telestick ${query}|${page + 1} SMH`,
-						buttonText: { displayText: "➡️ Next" },
+						buttonText: { displayText: "➡️ Próxima" },
 						type: 1,
 					},
 				];
@@ -53,12 +51,12 @@ module.exports = {
 				const buttons = [
 					{
 						buttonId: `#telestick ${query}|${page - 1} SMH`,
-						buttonText: { displayText: "⬅️ Previous" },
+						buttonText: { displayText: "⬅️ Anterior" },
 						type: 1,
 					},
 					{
 						buttonId: `#telestick ${query}|${page + 1} SMH`,
-						buttonText: { displayText: "➡️ Next" },
+						buttonText: { displayText: "➡️ Próxima" },
 						type: 1,
 					},
 				];
@@ -76,7 +74,7 @@ module.exports = {
 				const buttons = [
 					{
 						buttonId: `#telestick ${query}|${page - 1} SMH`,
-						buttonText: { displayText: "⬅️ Previous" },
+						buttonText: { displayText: "⬅️ Anterior" },
 						type: 1,
 					},
 				];
@@ -92,7 +90,7 @@ module.exports = {
 				);
 			}
 		} catch (e) {
-			await msg.reply(`Err: \n${e.stack}`);
+			await msg.reply(`Erro: \n${e.stack}`);
 		}
 	},
 };

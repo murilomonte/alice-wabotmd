@@ -13,7 +13,7 @@ module.exports = {
 			const cmd = commands.get(name) || commands.find((cmd) => cmd.alias && cmd.alias.includes(name));
 			if (!cmd || (cmd.category === "private" && !isOwner)) return await msg.reply("No command found");
 			else data.push(`*Comando:* ${cmd.name}`);
-			if (cmd.alias) data.push(`*ALternativas:* ${cmd.alias.join(", ")}`);
+			if (cmd.alias) data.push(`*Alternativas:* ${cmd.alias.join(", ")}`);
 			if (cmd.limit) data.push(`*Limite:* ${cmd.consume || 1}`);
 			if (cmd.premium) data.push(`*Premium:* ${cmd.premiumType.join(" / ")}`);
 			if (cmd.desc) data.push(`*Descrição:* ${cmd.desc}`);
