@@ -11,9 +11,10 @@ module.exports = {
 	owner: false,
 	async exec({ msg, sock, args, arg, isOwner }) {
         let tipo = args.join(" ")
+        if (!tipo) tipo = 'neko'
         let bjj = await fetchText(`https://nekos.life/api/v2/img/${tipo}`)
         if (!bjj.url) {
-            reply('Esse termo não existe ou não foi encontrado. Tente outro :)')
+            msg.reply('Esse termo não existe ou não foi encontrado. Tente outro :)')
         } else {
             await sock.sendMessage(
                 msg.from,

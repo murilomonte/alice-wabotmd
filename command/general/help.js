@@ -40,32 +40,28 @@ module.exports = {
 				}
 			}
 			let str =
-				`Hello, ${pushName === undefined ? sender.split("@")[0] : pushName}\n*Here My Command List*\n\n` +
-				`╭──────❨ *${botName}* ❩\n╰─────────\n` +
-				"╭──────❨ *DONATE* ❩\n├ Ko-fi: https://ko-fi.com/faizbastomi\n├ saweria: https://saweria.co/faizbastomi\n" +
-				"├ trakteer: https://trakteer.id/faizbastomi\n╰─────────\n\n";
+				`Olá, ${pushName === undefined ? sender.split("@")[0] : pushName}! :)\n*Meu nome é ${botName} e aqui estão meus comandos.*\n\n`
 			const keys = Object.keys(category);
 			for (const key of keys) {
-				str += `╭──────❨ *${key.toUpperCase()}* ❩\n\`\`\`${category[key]
+				str += `[ *${key.toUpperCase()}* ]\n\`\`\`${category[key]
 					.map(
 						(cmd, idx) =>
-							`├ ${idx + 1}. ${cmd.name}${cmd.limit ? ` (${cmd.consume || 1} limit)` : ""}${
-								cmd.premium ? ` (Premium Only)` : ""
+							`• ${idx + 1}. ${cmd.name}${cmd.limit ? ` (${cmd.consume || 1} limit)` : ""}${
+								cmd.premium ? ` (Premium)` : ""
 							}`
 					)
-					.join("\n")}\`\`\`\n╰──────────────\n`;
+					.join("\n")}\`\`\`\n──────────\n`;
 			}
-			str += `send ${prefix}help followed by a command name to get detail of command, e.g. ${prefix}help sticker`;
+			str += `envie ${prefix}help seguido de um comando para saber mais informações.\nEx: ${prefix}help sticker`;
 			await sock.sendMessage(
 				msg.from,
 				{
 					text: str,
 					footer: footer,
 					templateButtons: [
-						{ urlButton: { displayText: "Telegram Bot", url: "https://t.me/secondMidnight_bot" } },
 						{
 							urlButton: {
-								displayText: "Source Code",
+								displayText: "Código fonte",
 								url: "https://github.com/FaizBastomi/wbot/tree/multi-device",
 							},
 						},
