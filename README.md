@@ -41,12 +41,12 @@ Pegue a API do OpenWeatherMap aqui: [openweathermap.org](https://openweathermap.
 
 ### Criação de comandos
 - Entre na pasta `./command`
-- Em seguida escolha uma cateoria para seu comando (ex: `./command/general`)
+- Em seguida escolha uma categoria para seu comando (ex: `./command/general`)
 - Então crie um arquivo `.js` com o nome do seu comando.  (ex: `./command/general/menulegal.js`)
 - Ao criar o arquivo, use o seguinte código/template para criar o seu comando (é simples, juro!)
 
 ```ts
-modules. exports = {
+modules.exports = {
 	"name": string, //nome do comando (e como você quer que ele seja chamado. ex: /menulegal)
 	"desc": string, //descrição
 	"use": string, //uso
@@ -64,7 +64,7 @@ modules. exports = {
 ```
 - exemplo
 ```ts
-modules. exports =  {
+modules.exports =  {
 	"name": "igdl",
 	"desc": "Instagram Downloader",
 	"use": "<link>",
@@ -90,17 +90,21 @@ modules. exports =  {
 
 ### Instalação do ffmpeg
 - Se você usa windows, veja como instala por aqui [WikiHow](https://www.wikihow.com/Install-FFmpeg-on-Windows).<br />
-- Para usuários Linux você pode instalar através do seu gerenciador de pacotes
+- Para usuários Linux, você pode instalar através do seu gerenciador de pacotes:
 
 ```bash
-# apt
+# apt (ubuntu/debian)
 sudo apt install ffmpeg -y
 
-# pacman
+# pacman (arch/manjaro)
 sudo pacman -S ffmpeg
 
 # termux
 pkg install ffmpeg -y
+
+# dnf (fedora)
+# habilite o RPM fusion antes
+sudo dnf install ffmpeg
 ```
 
 ### Instalação do libWebP
@@ -120,14 +124,17 @@ webpmux -version
 - Para usuários linux, pasta usar o gerenciador de pacotes da sua distro: 
 
 ```bash
-# apt
+# apt (ubuntu/debian)
 sudo apt install libwebp-dev -y
 
-# pacman
+# pacman (arch/manjaro)
 sudo pacman -S libwebp
 
 # termux
 pkg install libwebp
+
+# dnf (fedora)
+sudo dnf install libwebp
 ```
 
 ### Instalação final
@@ -145,7 +152,7 @@ npm install
 ### Inicie o bot
 Inicie e scaneie o qr-code
 ```
-npm run start
+npm start
 
 # ou
 
