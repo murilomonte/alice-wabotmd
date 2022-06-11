@@ -1,4 +1,4 @@
-{
+{   // remova todos os comentários 
     "botName": "Alice",			//Nome do bot
     "owner": [					//Seu número e/ou o do seu amigo
         "seu_numero@s.whatsapp.net",
