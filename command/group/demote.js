@@ -3,8 +3,9 @@ const lang = require("../other/text.json");
 
 module.exports = {
 	name: "demote",
+	alias: ["rebaixar"],
 	category: "group",
-	desc: "Demote someone from admin.",
+	desc: "Use isso para rebaixar um mebro do grupo.",
 	async exec({ sock, msg }) {
 		const { mentions, quoted, from, sender, isGroup, body } = msg;
 		try {
@@ -25,47 +26,47 @@ module.exports = {
 				return members.includes(m);
 			};
 
-			if (!isGroup) return await msg.reply("Only can be executed in group.");
+			if (!isGroup) return await msg.reply("Esse comando só pode ser executado em grupos.");
 			if (!cekAdmin(sender))
 				return await msg.reply(
-					`IND:\n${lang.indo.group.demote.noPerms}\n\nEN:\n${lang.eng.group.demote.noPerms}`
+					lang.ptbr.group.demote.noPerms
 				);
 			if (!cekAdmin(myID))
 				return await msg.reply(
-					`IND:\n${lang.indo.group.demote.botNoPerms}\n\nEN:\n${lang.eng.group.demote.botNoPerms}`
+					lang.ptbr.group.demote.botNoPerms
 				);
 
 			if (quoted) {
 				const mention = quoted.participant;
-				if (!checkInGroup(mention)) return await msg.reply("Member no longer in group");
+				if (!checkInGroup(mention)) return await msg.reply("O membro não está mais no grupo.");
 				if (!cekAdmin(mention))
 					return await msg.reply(
-						`IND:\n${lang.indo.group.demote.fail}\n\nEN:\n${lang.eng.group.demote.fail}`
+						lang.indo.group.demote.fail
 					);
-				if (mention === owner) return await msg.reply("Cannot demote group creator");
+				if (mention === owner) return await msg.reply("Não é possível rebaixar o criador.");
 				// demote start
 				await sock.groupParticipantsUpdate(from, [mention], "demote");
-				await msg.reply(`IND:\n${lang.indo.group.demote.success}\n\nEN:\n${lang.eng.group.demote.success}`);
+				await msg.reply(lang.ptbr.group.demote.success);
 			} else if (mentions) {
 				const mention = mentions[0];
-				if (!checkInGroup(mention)) return await msg.reply("Member no longer in group");
+				if (!checkInGroup(mention)) return await msg.reply("MO membro não está mais no grupo.");
 				if (!cekAdmin(mention))
 					return await msg.reply(
-						`IND:\n${lang.indo.group.demote.fail}\n\nEN:\n${lang.eng.group.demote.fail}`
+						lang.indo.group.demote.fail
 					);
-				if (mention === owner) return await msg.reply("Cannot demote group creator");
+				if (mention === owner) return await msg.reply("Não é possível rebaixar o criador do grupo"); 
 				// demote start
 				await sock.groupParticipantsUpdate(from, [mention], "demote");
-				await msg.reply(`IND:\n${lang.indo.group.demote.success}\n\nEN:\n${lang.eng.group.demote.success}`);
+				await msg.reply(lang.ptbr.group.demote.success);
 			} else {
 				await msg.reply(
-					`How to: *${prefix + command} @mentionMember*\nor you can reply someone message with *${
+					`Como usar: *${prefix + command} @mentionMember*\nOu você pode apenas responder uma mensagem de quem você quer rebaixar *${
 						prefix + command
 					}*`
 				);
 			}
 		} catch (e) {
-			await msg.reply(`IND:\n${lang.indo.group.demote.fail}\n\nEN:\n${lang.eng.group.demote.fail}`);
+			await msg.reply(lang.ptbr.group.demote.fail);
 		}
 	},
 };

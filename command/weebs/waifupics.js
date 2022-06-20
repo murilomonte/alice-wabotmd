@@ -1,6 +1,7 @@
 const { fetchText } = require("../../utils")
 const { footer } = require("../../config.json");
-const { mimeTypes } = require("file-type");
+const { mimeTypes, fromStream } = require("file-type");
+const fs = require('fs')
 
 module.exports = {
 	name: "waifupics",
@@ -16,12 +17,24 @@ module.exports = {
                 tipo = 'sfw'
                 category = 'neko'
             }
+
             let bjj = await fetchText(`https://api.waifu.pics/${tipo}/${category}`)
+            
+            function legenda() {
+                if (bjj.url.includes(".gif")) {
+                    let caption = `Aqui está!\nCaso o gif não esteja se mexendo, veja ele aqui: ${bjj.url} :)`
+                    return caption
+                } else {
+                    let caption = `Aqui está!\nFonte: ${bjj.url}`
+                    return caption
+                }
+            }
+
             await sock.sendMessage(
                 msg.from,
                 {
                     image: { url: bjj.url },
-                    caption: `Aqui está!\nFonte: ${bjj.url}`
+                    caption: legenda()
                 },
                 { quoted: msg }
             );

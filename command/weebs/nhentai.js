@@ -2,10 +2,6 @@ const nhentai = require("nhentai-js");
 
 module.exports = {
 	name: "nuke",
-	limit: true,
-	consume: 5,
-	premium: true,
-	premiumType: ["nulgath", "artix"],
 	alias: ["nhentai", "ncode"],
 	category: "weebs",
 	use: "<nuke code>",
