@@ -14,7 +14,7 @@ Esse bot foi feito com base no <a href="https://github.com/FaizBastomi/wbot">Kag
 ### Configurações iniciais
 Altere o que for necessário no arquivo `./config.json`   <br />
 ```ts
-{
+{ // remova todos os comentários antes de iniciar o bot
     "botName": "Alice",			//Nome do bot
     "owner": [					//Seu número e/ou o do seu amigo
         "Your_Phonenumber@s.whatsapp.net",
