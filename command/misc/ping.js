@@ -5,6 +5,6 @@ module.exports = {
 	category: "misc",
 	desc: "Bot response in second.",
 	async exec({ msg }) {
-		await msg.reply(`*_${calculatePing(msg.messageTimestamp, Date.now())} second(s)_*`);
+		await msg.reply(`*Pong!*\nLevei ${calculatePing(msg.messageTimestamp, Date.now())} segundo(s) para te ressponder!`);
 	},
 };

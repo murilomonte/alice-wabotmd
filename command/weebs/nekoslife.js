@@ -13,11 +13,22 @@ module.exports = {
         try {
             if (!tipo) tipo = 'neko'
             let bjj = await fetchText(`https://nekos.life/api/v2/img/${tipo}`)
+
+            function legenda() {
+                if (bjj.url.includes(".gif")) {
+                    let caption = `Aqui está!\nCaso o gif não esteja se mexendo, veja ele aqui: ${bjj.url} :)`
+                    return caption
+                } else {
+                    let caption = `Aqui está!\nFonte: ${bjj.url}`
+                    return caption
+                }
+            }
+
             await sock.sendMessage(
                 msg.from,
                 {
                     image: { url: bjj.url },
-                    caption: `Aqui está!\nFonte: ${bjj.url}`
+                    caption: legenda()
                 },
                 { quoted: msg }
             );

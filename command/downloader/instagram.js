@@ -34,6 +34,7 @@ module.exports = {
 			}
 		} catch (e) {
 			await msg.reply(errMes);
+			console.log(e)
 		}
 	},
 };
