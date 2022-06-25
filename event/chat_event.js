@@ -136,17 +136,28 @@ module.exports = chatHandler = async (m, sock) => {
 
 		const cmdName = body.slice(temp_pref.length).trim().split(/ +/).shift().toLowerCase();
 		const cmd = djs.commands.get(cmdName) || djs.commands.find((cmd) => cmd.alias && cmd.alias.includes(cmdName));
-		if (!cmd) return;
+
+		//Checa se é um comando ou não
+		if (!cmd && !isGroup) {
+			return msg.reply(`Olá :)\nEnvie /menu e veja os comandos disponíveis :)`); 
+		} else if (body && !cmd && isGroup) {
+			return msg.reply('Esse comando não existe :/\nEnvie /menu e veja os comandos disponíveis :)')
+		};
 
 		// auto register
 		if (!user.getUser(sender)) user.addUser(sender);
+
 		// check if command for premium user
 		const userData = user.checkPremium(sender);
-		if (cmd.premium && !isOwner) {
+		if (!cmd && !body) {
+			return 
+		} else if (!cmd && !body && cmd.premium && !isOwner) {
+			if (!cmd && !body) return
 			if (!userData.status) return await msg.reply("Only Premium member!");
 			if (!cmd.premiumType.includes(userData.type))
 				return await msg.reply(`This command only for _'${cmd.premiumType.join(" / ")}'_`);
 		}
+
 		if (cmd.owner && !isOwner) {
 			return await msg.reply("You are not my owner");
 		}
