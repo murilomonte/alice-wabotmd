@@ -23,3 +23,8 @@ tes*.js
 
 # config file
 config.json
+
+# cache images
+event/cache/*.jpg
+event/cache/*.gif
+event/cache/*.png

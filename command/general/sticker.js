@@ -1,6 +1,7 @@
 const { sticker } = require("../../lib/convert");
 const lang = require("../other/text.json");
 
+
 module.exports = {
 	name: "s",
 	alias: ["sticker", "stick", "stik", "stiker", "stickergif", "stikergif", "gifstiker", "gifsticker"],
