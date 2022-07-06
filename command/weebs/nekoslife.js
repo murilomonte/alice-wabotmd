@@ -31,7 +31,7 @@ module.exports = {
                 //salva o arquivo
                 let response = await fetch(bjj.url);
                 let buffer = await response.buffer();
-                let saved = fs.writeFile(`./event/cache/${result}.${exten(bjj.url)}`, buffer, () => 
+                let saved = fs.writeFile(`./event/cache/nl/${tipo}/${result}.${exten(bjj.url)}`, buffer, () => 
                 console.log(`Salvo como ${result}.${exten(bjj.url)}`));
                 return saved;
             }

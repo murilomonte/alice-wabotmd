@@ -28,3 +28,5 @@ config.json
 event/cache/*.jpg
 event/cache/*.gif
 event/cache/*.png
+*.gif
+*.jpg

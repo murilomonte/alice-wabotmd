@@ -11,7 +11,7 @@ module.exports = {
 	use: "[modo] [categoria]\n\n- *modos* -\n\n1. nsfw\n2. sfw\n\n- *Categorias* -\n\n* sfw *:\nwaifu\nneko\nshinobu\nmegumin\nbully\ncuddle\ncry\nhug\nawoo\nkiss\nlick\npat\nsmug\nbonk\nyeet\nblush\nsmile\nwave\nhighfive\nhandhold\nnom\nbite\nglomp\nslap\nkill\nkick\nhappy\nwink\npoke\ndance\ncringe\n\n* nsfw *:\nwaifu\nneko\ntrap\nblowjob",
 	category: "weebs",
 	alias: ["wp", "waifu"],
-	async exec({ msg, sock, args, arg, isOwner }) {
+	async exec({ msg, sock, args, arg, isOwner, name }) {
         let tipo = args[0]
         let category = args[1]
         try { 
@@ -32,7 +32,7 @@ module.exports = {
                 //salva o arquivo
                 let response = await fetch(bjj.url);
                 let buffer = await response.buffer();
-                let saved = fs.writeFile(`./event/cache/${result}.${exten(bjj.url)}`, buffer, () => 
+                let saved = fs.writeFile(`./event/cache/wp/${tipo}/${category}/${result}.${exten(bjj.url)}`, buffer, () => 
                 console.log(`Salvo como ${result}.${exten(bjj.url)}`));
                 return saved;
             }
