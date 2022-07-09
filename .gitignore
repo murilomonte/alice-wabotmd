@@ -30,3 +30,5 @@ event/cache/*.gif
 event/cache/*.png
 *.gif
 *.jpg
+*.png
+*.jpeg
