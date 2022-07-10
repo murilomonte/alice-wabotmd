@@ -180,6 +180,8 @@ module.exports = chatHandler = async (m, sock) => {
 						{ text: `This group is on cooldown, please wait another _${timeLeft.toFixed(1)} second(s)_` },
 						{ quoted: msg }
 					);
+				}  else if (isOwner) {
+					return
 				} else if (!isGroup) {
 					let timeLeft = (expiration - now) / 1000;
 					printSpam(isGroup, sender);

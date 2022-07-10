@@ -6,7 +6,7 @@ const { slice } = require("cheerio/lib/api/traversing");
 const fetch = require('node-fetch');
 
 module.exports = {
-	name: "waifim",
+	name: "waifuim",
 	desc: "Use esse comando para receber imagens e gifs do site waifu.im :)",
 	use: "[modo] [categoria]\n\n- *modos* -\n\n1. nsfw\n2. sfw\n\n- *Categorias* -\n\n* sfw *:\nwaifu\nneko\nshinobu\nmegumin\nbully\ncuddle\ncry\nhug\nawoo\nkiss\nlick\npat\nsmug\nbonk\nyeet\nblush\nsmile\nwave\nhighfive\nhandhold\nnom\nbite\nglomp\nslap\nkill\nkick\nhappy\nwink\npoke\ndance\ncringe\n\n* nsfw *:\nwaifu\nneko\ntrap\nblowjob",
 	category: "weebs",
@@ -28,11 +28,14 @@ module.exports = {
             }
             
             function legenda() {
+                let bjjinfo = `Aqui está!\nFonte: ${bjj.images[0].source}\nÉ nsfw?: ${bjj.images[0].is_nsfw}\nURL: ${bjj.images[0].url}`
+                //Cor dominante: ${bjj.images[0].dominant_color}\n
+
                 if (bjj.images[0].extension == ".gif") {
-                    let caption = `Aqui está!\nCaso o gif não esteja se mexendo, veja ele aqui: ${bjj.images[0].url} :)`
+                    let caption = bjjinfo + `\nCaso o gif não esteja se mexendo, veja ele aqui: ${bjj.images[0].url} :)`
                     return caption
                 } else {
-                    let caption = `Aqui está!\nFonte: ${bjj.images[0].url}`
+                    let caption = bjjinfo
                     return caption
                 }
             }
@@ -42,10 +45,7 @@ module.exports = {
             }
             
             let bjj = await fetchText(`https://api.waifu.im/random/?selected_tags=${category}`)
-
             let res = bjj.images[0].url
-
-            console.log(res)
 
             await sock.sendMessage(
                 msg.from,

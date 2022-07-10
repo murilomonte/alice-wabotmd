@@ -25,6 +25,7 @@
     "next-absolute-url": "^1.2.2",
     "nhentai-js": "^4.0.0",
     "parse-ms": "^2.1.0",
+    "reddit-image-fetcher": "^2.0.11",
     "webp-converter": "2.3.3",
     "wikijs": "^6.3.3",
     "yt-search": "^2.10.3"
