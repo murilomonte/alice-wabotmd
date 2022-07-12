@@ -52,9 +52,7 @@ module.exports = {
                 {
                     image: { url: res },
                     caption: legenda(),
-                    templateButtons: [
-                        { quickReplyButton: { displayText: "Mais", id: `/wi ${category}` } },
-                    ],
+                    
                 },
                 { quoted: msg }
             );

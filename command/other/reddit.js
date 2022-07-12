@@ -63,9 +63,6 @@ module.exports = {
                     {
                         image: { url: result[0].image },
                         caption: legenda(result),
-                        templateButtons: [
-                            { quickReplyButton: { displayText: "Mais", id: `/rs ${args[0]}` } },
-                        ],
                     },
                     { quoted: msg }
                 );

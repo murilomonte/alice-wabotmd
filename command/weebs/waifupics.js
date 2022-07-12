@@ -60,9 +60,6 @@ module.exports = {
                 {
                     image: { url: bjj.url },
                     caption: legenda(),
-                    templateButtons: [
-                        { quickReplyButton: { displayText: "Mais", id: `/wp ${tipo} ${category}` } },
-                    ],
                 },
                 { quoted: msg }
             );
