@@ -5,6 +5,7 @@ const fs = require('fs');
 const { slice } = require("cheerio/lib/api/traversing");
 const fetch = require('node-fetch');
 const RedditImageFetcher = require("reddit-image-fetcher");
+const { type } = require("os");
 
 module.exports = {
 	name: "reddit",
@@ -13,7 +14,7 @@ module.exports = {
 	category: "random",
 	alias: ["rs"],
 	async exec({ msg, sock, args, arg, isOwner, name }) {
-        let category = args[0]
+        let category = await args[0]
         try { 
             //provavelmente tinha um jeito melhor de fazer isso que você está vendo, mas eu não sei como, no momento
             function exten(check) { 
@@ -61,10 +62,16 @@ module.exports = {
                     msg.from,
                     {
                         image: { url: result[0].image },
-                        caption: legenda(result)
+                        caption: legenda(result),
+                        templateButtons: [
+                            { quickReplyButton: { displayText: "Mais", id: `/rs ${args[0]}` } },
+                        ],
                     },
                     { quoted: msg }
                 );
+                
+                console.log(category)
+                console.log(result[0].subreddit)
                 saveCache(result)
             });
 
