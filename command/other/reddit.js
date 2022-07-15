@@ -35,7 +35,15 @@ module.exports = {
                 let buffer = await response.buffer();
                 let saved = fs.writeFile(`./event/cache/reddit/${resname}.${exten(result[0].image)}`, buffer, () => 
                 console.log(`Salvo como ${resname}.${exten(result[0].image)}`));
-                return saved;
+
+                let folderName = './event/cache/reddit';
+                if (!fs.existsSync(folderName)) {
+                    fs.mkdirSync(folderName, {recursive: true});
+                    console.log('Cache folder created.')
+                    return saved
+                } else {
+                    return saved
+                }
             }
 
             function legenda(result) {
@@ -66,9 +74,6 @@ module.exports = {
                     },
                     { quoted: msg }
                 );
-                
-                console.log(category)
-                console.log(result[0].subreddit)
                 saveCache(result)
             });
 

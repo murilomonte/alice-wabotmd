@@ -31,9 +31,17 @@ module.exports = {
                 //salva o arquivo
                 let response = await fetch(bjj.url);
                 let buffer = await response.buffer();
-                let saved = fs.writeFile(`./event/cache/nl/${tipo}/${result}.${exten(bjj.url)}`, buffer, () => 
+                let saved = fs.writeFile(`./event/cache/nl/${result}.${exten(bjj.url)}`, buffer, () => 
                 console.log(`Salvo como ${result}.${exten(bjj.url)}`));
-                return saved;
+
+                let folderName = './event/cache/nl';
+                if (!fs.existsSync(folderName)) {
+                    fs.mkdirSync(folderName, {recursive: true});
+                    console.log('Cache folder created.')
+                    return saved
+                } else {
+                    return saved
+                }
             }
 
             function legenda() {
@@ -59,6 +67,8 @@ module.exports = {
             );
 
             saveCache()
+
+
         } catch (e) {
             msg.reply('Esse termo não existe ou não foi encontrado. Tente outro :)')
             console.log(e)

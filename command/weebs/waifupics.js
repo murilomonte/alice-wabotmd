@@ -32,9 +32,17 @@ module.exports = {
                 //salva o arquivo
                 let response = await fetch(bjj.url);
                 let buffer = await response.buffer();
-                let saved = fs.writeFile(`./event/cache/wp/${tipo}/${category}/${result}.${exten(bjj.url)}`, buffer, () => 
+                let saved = fs.writeFile(`./event/cache/wp/${result}.${exten(bjj.url)}`, buffer, () => 
                 console.log(`Salvo como ${result}.${exten(bjj.url)}`));
-                return saved;
+                
+                let folderName = './event/cache/wp';
+                if (!fs.existsSync(folderName)) {
+                    fs.mkdirSync(folderName, {recursive: true});
+                    console.log('Cache folder created.')
+                    return saved
+                } else {
+                    return saved
+                }
             }
             
             function legenda() {
@@ -52,8 +60,6 @@ module.exports = {
                 category = 'neko'
             }
             let bjj = await fetchText(`https://api.waifu.pics/${tipo}/${category}`)
-
-            console.log(typeof(bjj.url))
 
             await sock.sendMessage(
                 msg.from,

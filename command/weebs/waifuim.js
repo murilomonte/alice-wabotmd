@@ -22,9 +22,17 @@ module.exports = {
                 //salva o arquivo
                 let response = await fetch(bjj.images[0].url);
                 let buffer = await response.buffer();
-                let saved = fs.writeFile(`./event/cache/wi/${category}/${result}.${bjj.images[0].extension}`, buffer, () => 
+                let saved = fs.writeFile(`./event/cache/wi/${result}.${bjj.images[0].extension}`, buffer, () => 
                 console.log(`Salvo como ${result}.${bjj.images[0].extension}`));
-                return saved;
+
+                let folderName = './event/cache/wi';
+                if (!fs.existsSync(folderName)) {
+                    fs.mkdirSync(folderName, {recursive: true});
+                    console.log('Cache folder created.')
+                    return saved
+                } else {
+                    return saved
+                }
             }
             
             function legenda() {
