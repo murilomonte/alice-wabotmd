@@ -52,12 +52,10 @@ module.exports = {
 					)
 					.join("\n")}\`\`\`\n──────────\n`;
 			}
-			str += `envie ${prefix}help seguido de um comando para saber mais informações.\nEx: ${prefix}help sticker`;
-			await sock.sendMessage(
-				msg.from,
-				{
-					text: str,
-					footer: footer,
+			
+			/*
+			footer: footer
+			,
 					templateButtons: [
 						{
 							urlButton: {
@@ -66,6 +64,13 @@ module.exports = {
 							},
 						},
 					],
+			*/
+
+			str += `envie ${prefix}help seguido de um comando para saber mais informações.\nEx: ${prefix}help sticker`;
+			await sock.sendMessage(
+				msg.from,
+				{
+					text: str
 				},
 				{ quoted: msg }
 			);
